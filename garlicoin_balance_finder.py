@@ -1,6 +1,8 @@
 
 import urllib.request
 
+val_dict = {}
+
 USER_AGENT = \
     "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.7) Gecko/2009021910 Firefox/3.0.7"
 HEADERS = {"User-Agent":USER_AGENT,}
@@ -27,6 +29,7 @@ def output(values):
     print("Percentage: " + str((total/total_supply) * 100) + "%")
 
 def main():
+    global val_dict
     adr_file = open("addresses.txt","r")
     data = adr_file.read().split("\n")[:-1]
     adr_dict = {}
