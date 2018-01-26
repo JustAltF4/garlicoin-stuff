@@ -35,4 +35,5 @@ def main():
     val_dict = load(adr_dict)
     output(val_dict)
 
-main()
+if __name__ == "__main__":
+    main()
