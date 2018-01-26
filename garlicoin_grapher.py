@@ -2,12 +2,12 @@
 WIP
 """
 import matplotlib.pyplot as plt
-from garlicoin_balance_finder import value_dict
+import garlicoin_balance_finder
 
 def plot_bar_graph():
     plt.ylabel('GRLC')
     names = []
     values = []
-    for key, value in value_dict():
+    for key, value in value_dict:
         names.append[key.capitalize()]
         values.append(value)
