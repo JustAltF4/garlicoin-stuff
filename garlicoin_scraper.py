@@ -7,7 +7,7 @@ month = {"Jan": 0,"Feb": 44640,"Mar": 84960,"Apr": 129600,"May": 172800,"Jun": 2
 year = 525600
 
 # required percentage increase (1 = 100%) to justify a break in mining
-REQUIRED_INCREASE = 3.5
+REQUIRED_INCREASE = 100
 
 def get(address):
     #returns an array of 2 length tuples containing the grlc increase and time in that order
@@ -30,7 +30,7 @@ def convert_to_mins(time):
     total += 60 * int(time.strip(" ").split(" ")[-1].split(":")[0])
     total += int(time.strip(" ").split(" ")[-1].split(":")[1])
     return total
- 
+
 def get_difference(time2, time1):
     #finds the difference in minutes between two times
     return convert_to_mins(time1) - convert_to_mins(time2)
@@ -48,5 +48,5 @@ def get_average_per_minute(address):
             time_skips.append(dif)
             total_time += dif
     return total / total_time
- 
+
 #print(get_average_per_minute("Gh86Zs3ek69sNdfebaE7DkhDHTYoKF99kL"))
