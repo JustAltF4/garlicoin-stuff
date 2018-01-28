@@ -1,7 +1,7 @@
 
 import urllib.request
 import garlicoin_scraper
-
+import matplotlib.pyplot as plt
 val_dict = {}
 apm_dict = {}
 USER_AGENT = \
@@ -72,7 +72,6 @@ def main():
     pie_chart(val_dict)
     print("Per minute: ")
     output(apm_dict)
-    pie_chart(apm_dict)
 
 if __name__ == "__main__":
     main()
