@@ -14,7 +14,7 @@ def get(address):
     URL = "https://explorer.grlc-bakery.fun/address/" + address
     request = urllib.request.Request(URL, None, header)
     page = urllib.request.urlopen(request)
-    rows = re.findall(r'<tr>(.*?)</tr>',re.findall(r'<tbody>(.*?)</tbody>', str(page.read()).replace("\n",""))[2])
+    rows = re.findall(r'<tr>(.*?)</tr>',re.findall(r'<tbody>(.*?)</tbody>', str(page.read()).replace("\n","").replace("info","success"))[2])
     row_data = []
     for row in rows:
         row_data.append((float(re.findall(r'<td class="success">(.*?)</td>', row)[0].split(" ")[1]), re.findall(r'<td class="hidden-xs">(.*?)</td>', row)[0]))
