@@ -10,8 +10,8 @@ REQUIRED_INCREASE = 3.5
 
 def get(address):
     URL = "https://explorer.grlc-bakery.fun/address/" + address
-    request = urllib2.Request(URL, headers = header)
-    page = urllib2.urlopen(request)
+    request = urllib.request.Request(URL, None, header)
+    page = urllib.request.urlopen(request)
     rows = re.findall(r'<tr>(.*?)</tr>',re.findall(r'<tbody>(.*?)</tbody>', page.read().replace("\n",""))[2])
     row_data = []
     for row in rows:
