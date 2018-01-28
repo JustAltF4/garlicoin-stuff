@@ -6,9 +6,11 @@ day = 1440
 month = {"Jan": 0,"Feb": 44640,"Mar": 84960,"Apr": 129600,"May": 172800,"Jun": 217440,"Jul": 260640,"Aug": 305280,"Sep": 349920,"Oct": 393120,"Nov": 437760,"Dec": 480960}
 year = 525600
 
+# required percentage increase (1 = 100%) to justify a break in mining
 REQUIRED_INCREASE = 3.5
 
 def get(address):
+    #returns an array of 2 length tuples containing the grlc increase and time in that order
     URL = "https://explorer.grlc-bakery.fun/address/" + address
     request = urllib.request.Request(URL, None, header)
     page = urllib.request.urlopen(request)
@@ -30,16 +32,16 @@ def convert_to_mins(time):
     return total
  
 def get_difference(time2, time1):
+    #finds the difference in minutes between two times
     return convert_to_mins(time1) - convert_to_mins(time2)
 
 def get_average_per_minute(address):
+    #finds average garlicoins per minute by adding total garlicoin change and time change
     history = get(address)
     time_skips = [get_difference(history[0][1], history[1][1])]
     total = history[0][0]
     total_time = get_difference(history[0][1], history[1][1])
     for i in range(1, len(history)-1):
-        print(total)
-        print(total_time)
         total += history[i][0]
         dif = get_difference(history[i][1], history[i+1][1])
         if not ((dif/(total_time/len(time_skips))) > REQUIRED_INCREASE):
@@ -47,4 +49,4 @@ def get_average_per_minute(address):
             total_time += dif
     return total / total_time
  
-print(get_average_per_minute("Gh86Zs3ek69sNdfebaE7DkhDHTYoKF99kL"))
+#print(get_average_per_minute("Gh86Zs3ek69sNdfebaE7DkhDHTYoKF99kL"))
